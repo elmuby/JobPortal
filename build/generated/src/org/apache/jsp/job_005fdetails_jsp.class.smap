@@ -1,0 +1,13 @@
+SMAP
+job_005fdetails_jsp.java
+JSP
+*S JSP
+*F
++ 0 job_details.jsp
+job_details.jsp
++ 1 footer.jsp
+footer.jsp
+*L
+1,132:49
+1#1,232:180
+*E

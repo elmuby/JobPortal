@@ -1,0 +1,17 @@
+SMAP
+ApplicationPage_jsp.java
+JSP
+*S JSP
+*F
++ 0 ApplicationPage.jsp
+ApplicationPage.jsp
++ 1 header.jsp
+header.jsp
++ 2 footer.jsp
+footer.jsp
+*L
+5,5:51
+1#1,98:55
+9#0,12:152
+1#2,232:163
+*E
