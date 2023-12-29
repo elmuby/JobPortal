@@ -5,9 +5,13 @@ JSP
 *F
 + 0 job_details.jsp
 job_details.jsp
-+ 1 footer.jsp
++ 1 header.jsp
+header.jsp
++ 2 footer.jsp
 footer.jsp
 *L
-1,132:49
-1#1,232:180
+1,2:51
+1#1,98:53
+3#0,133:150
+1#2,232:282
 *E

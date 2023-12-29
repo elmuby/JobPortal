@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Project.ConnectionProvider;
 
 public final class job_005fdetails_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -12,7 +13,8 @@ public final class job_005fdetails_jsp extends org.apache.jasper.runtime.HttpJsp
   private static java.util.List<String> _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList<String>(1);
+    _jspx_dependants = new java.util.ArrayList<String>(2);
+    _jspx_dependants.add("/header.jsp");
     _jspx_dependants.add("/footer.jsp");
   }
 
@@ -35,7 +37,7 @@ public final class job_005fdetails_jsp extends org.apache.jasper.runtime.HttpJsp
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html");
+      response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -46,10 +48,110 @@ public final class job_005fdetails_jsp extends org.apache.jasper.runtime.HttpJsp
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\n');
+      out.write('\n');
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html class=\"no-js\" lang=\"zxx\">\n");
+      out.write("  <head>\n");
+      out.write("    <meta charset=\"utf-8\" />\n");
+      out.write("    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\" />\n");
+      out.write("    <meta name=\"description\" content=\"\" />\n");
+      out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n");
+      out.write("    <link rel=\"manifest\" href=\"site.webmanifest\" />\n");
+      out.write("    <link\n");
+      out.write("      rel=\"shortcut icon\"\n");
+      out.write("      type=\"image/x-icon\"\n");
+      out.write("      href=\"assets/img/favicon.ico\"\n");
+      out.write("    />\n");
+      out.write("\n");
+      out.write("    <!-- CSS here -->\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/bootstrap.min.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/owl.carousel.min.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/flaticon.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/price_rangs.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/slicknav.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/animate.min.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/magnific-popup.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/fontawesome-all.min.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/themify-icons.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/slick.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/nice-select.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/style.css\" />\n");
+      out.write("  </head>\n");
+      out.write("\n");
+      out.write("  <body>\n");
+      out.write("    <!-- Preloader Start -->\n");
+      out.write("    <div id=\"preloader-active\">\n");
+      out.write("      <div class=\"preloader d-flex align-items-center justify-content-center\">\n");
+      out.write("        <div class=\"preloader-inner position-relative\">\n");
+      out.write("          <div class=\"preloader-circle\"></div>\n");
+      out.write("          <div class=\"preloader-img pere-text\">\n");
+      out.write("            <img src=\"assets/img/logo/logo.png\" alt=\"\" />\n");
+      out.write("          </div>\n");
+      out.write("        </div>\n");
+      out.write("      </div>\n");
+      out.write("    </div>\n");
+      out.write("    <!-- Preloader Start -->\n");
+      out.write("    <header>\n");
+      out.write("      <!-- Header Start -->\n");
+      out.write("      <div class=\"header-area header-transparrent\">\n");
+      out.write("        <div class=\"headder-top header-sticky\">\n");
+      out.write("          <div class=\"container\">\n");
+      out.write("            <div class=\"row align-items-center\">\n");
+      out.write("              <div class=\"col-lg-3 col-md-2\">\n");
+      out.write("                <!-- Logo -->\n");
+      out.write("                <div class=\"logo\">\n");
+      out.write("                  <a href=\"index.jsp\"\n");
+      out.write("                    ><img src=\"assets/img/logo/logo.png\" alt=\"\"\n");
+      out.write("                  /></a>\n");
+      out.write("                </div>\n");
+      out.write("              </div>\n");
+      out.write("              <div class=\"col-lg-9 col-md-9\">\n");
+      out.write("                <div class=\"menu-wrapper\">\n");
+      out.write("                  <!-- Main-menu -->\n");
+      out.write("                  <div class=\"main-menu\">\n");
+      out.write("                    <nav class=\"d-none d-lg-block\">\n");
+      out.write("                      <ul id=\"navigation\">\n");
+      out.write("                        <li><a href=\"index.jsp\">Home</a></li>\n");
+      out.write("                        <li><a href=\"job_listing.jsp\">Find a Jobs </a></li>\n");
+      out.write("                        <li><a href=\"about.jsp\">About</a></li>\n");
+      out.write("                        <!-- <li><a href=\"#\">Page</a>\n");
+      out.write("                                                <ul class=\"submenu\">\n");
+      out.write("                                                    <li><a href=\"blog.html\">Blog</a></li>\n");
+      out.write("                                                    <li><a href=\"single-blog.html\">Blog Details</a></li>\n");
+      out.write("                                                    <li><a href=\"elements.html\">Elements</a></li>\n");
+      out.write("                                                    <li><a href=\"job_details.jsp\">job Details</a></li>\n");
+      out.write("                                                </ul>\n");
+      out.write("                                            </li> -->\n");
+      out.write("                        <li><a href=\"contact.jsp\">Contact</a></li>\n");
+      out.write("                      </ul>\n");
+      out.write("                    </nav>\n");
+      out.write("                  </div>\n");
+      out.write("                  <!-- Header-btn -->\n");
+      out.write("                  <div class=\"header-btn d-none f-right d-lg-block\">\n");
+      out.write("                    <a href=\"#\" class=\"btn head-btn1\">Register</a>\n");
+      out.write("                    <a href=\"#\" class=\"btn head-btn2\">Login</a>\n");
+      out.write("                  </div>\n");
+      out.write("                </div>\n");
+      out.write("              </div>\n");
+      out.write("              <!-- Mobile Menu -->\n");
+      out.write("              <div class=\"col-12\">\n");
+      out.write("                <div class=\"mobile_menu d-block d-lg-none\"></div>\n");
+      out.write("              </div>\n");
+      out.write("            </div>\n");
+      out.write("          </div>\n");
+      out.write("        </div>\n");
+      out.write("      </div>\n");
+      out.write("      <!-- Header End -->\n");
+      out.write("    </header>\n");
+      out.write("    \n");
+      out.write("  </body>\n");
+      out.write("</html>\n");
+      out.write("\n");
       out.write("<!doctype html>\n");
       out.write("<html class=\"no-js\" lang=\"zxx\">\n");
       out.write("    <head>\n");
-      out.write("         <title>Job board HTML-5 Template </title>\n");
+      out.write("         <title>Job Details </title>\n");
       out.write("        \n");
       out.write("   </head>\n");
       out.write("\n");

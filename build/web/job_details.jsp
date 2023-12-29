@@ -4,7 +4,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
-         <title>Job board HTML-5 Template </title>
+         <title>Job Details </title>
         
    </head>
 
