@@ -63,14 +63,6 @@
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="job_listing.jsp">Find a Jobs </a></li>
                         <li><a href="about.jsp">About</a></li>
-                        <!-- <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.jsp">job Details</a></li>
-                                                </ul>
-                                            </li> -->
                         <li><a href="contact.jsp">Contact</a></li>
                       </ul>
                     </nav>
