@@ -73,7 +73,7 @@
                                 <span class="flaticon-tour"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Design & Creative</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Design & Creative</a></h5>
                                 <span>(653)</span>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                                 <span class="flaticon-cms"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Design & Development</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Design & Development</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 <span class="flaticon-report"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Sales & Marketing</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Sales & Marketing</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                 <span class="flaticon-app"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Mobile Application</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Mobile Application</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                                 <span class="flaticon-helmet"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Construction</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Construction</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                                 <span class="flaticon-high-tech"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Information Technology</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Information Technology</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                                 <span class="flaticon-real-estate"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Real Estate</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Real Estate</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                                 <span class="flaticon-content"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="job_listing.jsp">Content Writer</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/JobListing">Content Writer</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="browse-btn2 text-center mt-50">
-                            <a href="job_listing.jsp" class="border-btn2">Browse All Sectors</a>
+                            <a href="<%= request.getContextPath()%>/JobListing" class="border-btn2">Browse All Sectors</a>
                         </div>
                     </div>
                 </div>
@@ -201,10 +201,10 @@
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="job_details.jsp"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                    <a href="<%= request.getContextPath()%>/JobDetails"><img src="assets/img/icon/job-list1.png" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.jsp"><h4>Digital Marketer</h4></a>
+                                    <a href="<%= request.getContextPath()%>/JobDetails"><h4>Digital Marketer</h4></a>
                                     <ul>
                                         <li>Creative Agency</li>
                                         <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
@@ -213,67 +213,7 @@
                                 </div>
                             </div>
                             <div class="items-link f-right">
-                                <a href="job_details.jsp">Full Time</a>
-                                
-                            </div>
-                        </div>
-                        <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.jsp"><img src="assets/img/icon/job-list2.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.jsp"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.jsp">Full Time</a>
-                                
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.jsp"><img src="assets/img/icon/job-list3.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.jsp"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.jsp">Full Time</a>
-                                
-                            </div>
-                        </div>
-                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="job_details.jsp"><img src="assets/img/icon/job-list4.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="job_details.jsp"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="job_details.jsp">Full Time</a>
+                                <a href="<%= request.getContextPath()%>/JobDetails">Full Time</a>
                                 
                             </div>
                         </div>

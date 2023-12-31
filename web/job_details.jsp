@@ -13,8 +13,10 @@
 
     <body>
         <main>
-
-
+            <!-- To keep track of the jobID and EmployerID-->
+            <input type="hidden" value='${EmployerID}' name='EmployerID'>
+            <input type="hidden" value='${JobID}' name='JobID'>
+            
             <!-- Hero Area Start-->
             <div class="slider-area ">
                 <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
@@ -43,7 +45,7 @@
                             <div class="single-job-items mb-50">
                                 <div class="job-items">
                                     <div class="company-img company-img-details">
-                                        <a href="#"><img src='data:image/jpeg;base64, ${base64Image}' alt="Company Logo">
+                                        <a href="#"><img src='data:image/png;base64,${base64Image}' alt="Company Logo">
                                     </div>
                                     <div class="job-tittle">
                                         <a href="">

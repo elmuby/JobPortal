@@ -119,7 +119,9 @@ public final class job_005fdetails_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                    <nav class=\"d-none d-lg-block\">\n");
       out.write("                      <ul id=\"navigation\">\n");
       out.write("                        <li><a href=\"index.jsp\">Home</a></li>\n");
-      out.write("                        <li><a href=\"job_listing.jsp\">Find a Jobs </a></li>\n");
+      out.write("                        <li><a href=\"");
+      out.print( request.getContextPath());
+      out.write("/JobListing\">Find a Jobs </a></li>\n");
       out.write("                        <li><a href=\"about.jsp\">About</a></li>\n");
       out.write("                        <li><a href=\"contact.jsp\">Contact</a></li>\n");
       out.write("                      </ul>\n");
@@ -187,7 +189,7 @@ public final class job_005fdetails_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                            <div class=\"single-job-items mb-50\">\n");
       out.write("                                <div class=\"job-items\">\n");
       out.write("                                    <div class=\"company-img company-img-details\">\n");
-      out.write("                                        <a href=\"#\"><img src='data:image/jpeg;base64, ");
+      out.write("                                        <a href=\"#\"><img src='data:image/png;base64,");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${base64Image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("' alt=\"Company Logo\">\n");
       out.write("                                    </div>\n");
