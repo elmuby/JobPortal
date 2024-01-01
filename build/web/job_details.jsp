@@ -45,7 +45,8 @@
                             <div class="single-job-items mb-50">
                                 <div class="job-items">
                                     <div class="company-img company-img-details">
-                                        <a href="#"><img src='data:image/png;base64,${base64Image}' alt="Company Logo">
+                                        <img src= 'data:image/png;base64,${base64Image}' alt="Company Logo">
+                                             <!---->
                                     </div>
                                     <div class="job-tittle">
                                         <a href="">
@@ -67,7 +68,10 @@
                                     <div class="small-section-tittle">
                                         <h4>Job Description</h4>
                                     </div>
-                                    <p> ${jobDescription} </p>
+                                    <ul>
+                                        <li>${jobDescription}</li>
+                                    </ul>
+                                    
                                 </div>
                                 <div class="post-details2  mb-50">
                                     <!-- Small Section Tittle -->
@@ -75,11 +79,7 @@
                                         <h4>Required Knowledge, Skills, and Abilities</h4>
                                     </div>
                                     <ul>
-                                        <li> ${requiredKnowledge}</li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
+                                        <li>${requiredKnowledge}</li>
                                     </ul>
                                 </div>
                                 <div class="post-details2  mb-50">
@@ -88,11 +88,7 @@
                                         <h4>Education + Experience</h4>
                                     </div>
                                     <ul>
-                                        <li> ${educationNExperience} </li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
+                                        <li>${educationNExperience} </li>
                                     </ul>
                                 </div>
                             </div>
