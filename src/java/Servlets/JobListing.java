@@ -35,8 +35,12 @@ public class JobListing extends HttpServlet {
                     + "FORMAT(postedDate, 'd, MMMM yyyy') AS 'PostedDate' From Employer A Join JobDetails B ON B .EmployerID = A.EmployerID order by JobID desc";
             ResultSet rs = statement.executeQuery(joinQuery);
             ResultSet countResult = countStatement.executeQuery(countQuery);
-            while(countResult.next()){
+            while(countResult.next() && rs.next()){
                 request.setAttribute("count", countResult.getString("count"));
+                String jobID = rs.getString("jobID");
+                String employerID = rs.getString("EmployerID");
+                request.setAttribute("jobID", jobID);
+                request.setAttribute("employerID", employerID);
             }
             request.getRequestDispatcher("job_listing.jsp").forward(request, response);
 

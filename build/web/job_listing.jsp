@@ -27,14 +27,6 @@
       </div>
       <!-- Hero Area End -->
       
-      <% 
-      try{
-          Connection con = ConnectionProvider.getConnection();
-      }
-      catch(Exception e){
-          System.out.println(e);
-      }
-      %>
       <!-- Job List Area Start -->
       <div class="job-listing-area pt-120 pb-120">
         <div class="container">
@@ -49,6 +41,8 @@
                     <div class="col-lg-12">
                       <div class="count-job mb-35">
                         <span>${count} Jobs found</span>
+                        <span>${jobID}</span>
+                        <span>${employerID}</span>
                         <!-- Select job items start -->
                         <div class="select-job-items">
                           <span>Sort by</span>
@@ -70,12 +64,13 @@
                   <div class="single-job-items mb-30">
                     <div class="job-items">
                       <div class="company-img">
-                        <a href="<%= request.getContextPath()%>/JobDetails"
+                          <!-- the code is to help us keep track of jobID and employerID and send it to the JobDetailsServlet -->
+                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${jobID}&employerID=${employerID}"
                           ><img src="assets/img/icon/job-list1.png" alt=""
                         /></a>
                       </div>
                       <div class="job-tittle job-tittle2">
-                        <a href="<%= request.getContextPath()%>/JobDetails">
+                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${jobID}&employerID=${employerID}">
                           <h4>Digital Marketer</h4>
                         </a>
                         <ul>
@@ -89,7 +84,7 @@
                     </div>
                     <div class="items-link items-link2 f-right">
                         
-                      <a href="<%= request.getContextPath()%>/JobDetails">Full Time</a>
+                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=${jobID}&employerID=${employerID}">Full Time</a>
                     </div>
                   </div>
                 </div>
