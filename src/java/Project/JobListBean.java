@@ -23,16 +23,6 @@ public class JobListBean {
     public JobListBean(){
         super();
     }
-    public JobListBean(String base64Image, String jobID, String employerID, String jobNature, String jobTitle, String location, String salaryRange, String employerName) {
-        this.base64Image = base64Image;
-        this.jobID = jobID;
-        this.employerID = employerID;
-        this.jobNature = jobNature;
-        this.jobTitle = jobTitle;
-        this.location = location;
-        this.salaryRange = salaryRange;
-        this.employerName = employerName;
-    }
 
     public String getBase64Image() {
         return base64Image;

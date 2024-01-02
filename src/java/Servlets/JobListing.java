@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,6 +30,8 @@ public class JobListing extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
+            HttpSession session = request.getSession();
+            session.setAttribute("userLoggedIn", "allowed");
             Connection con = ConnectionProvider.getConnection();
             Statement statement = con.createStatement();
             Statement countStatement = con.createStatement();
@@ -40,9 +43,11 @@ public class JobListing extends HttpServlet {
             ResultSet countResult = countStatement.executeQuery(countQuery);
             //creating arraylist to store the object of joblistbean class
             List<JobListBean> jobList = new ArrayList<>();
-            
-            while(countResult.next() && rs.next()){
+            while(countResult.next()){
                 request.setAttribute("count", countResult.getString("count"));
+            }
+            while (rs.next()) {
+                
                 //retrieving from the database
                 String jobID = rs.getString("jobID");
                 String employerID = rs.getString("EmployerID");
@@ -51,14 +56,13 @@ public class JobListing extends HttpServlet {
                 String employerName = rs.getString("EmployerName");
                 String jobTitle = rs.getString("JobTitle");
                 String jobNature = rs.getString("JobNature");
-                
-                
+
                 byte[] imageData = rs.getBytes("company_logo");
                 // Converting image data to Base64
                 String base64Image = Base64.getEncoder().encodeToString(imageData);
-                
+
                 //creating an object of JobListBean Class
-                JobListBean jobListBean =new JobListBean();
+                JobListBean jobListBean = new JobListBean();
                 //setting the setters fields in the JoblistBean Class
                 jobListBean.setBase64Image(base64Image);
                 jobListBean.setEmployerID(employerID);
@@ -68,22 +72,12 @@ public class JobListing extends HttpServlet {
                 jobListBean.setJobTitle(jobTitle);
                 jobListBean.setLocation(location);
                 jobListBean.setSalaryRange(salaryRange);
-                
+
                 //adding the JobListBean object to the List jobList
                 jobList.add(jobListBean);
-                //sending the list as an attribute to the job_listing.jsp
-                request.setAttribute("jobList", jobList);
-                //
-//                request.setAttribute("base64Image", (base64Image));
-//                
-//                request.setAttribute("location", location );
-//                request.setAttribute("salaryRange",salaryRange );
-//                request.setAttribute("employerName", employerName);
-//                request.setAttribute("jobTitle", jobTitle);
-//                request.setAttribute("jobID", jobID);
-//                request.setAttribute("employerID", employerID);
-//                request.setAttribute("jobNature", jobNature);
             }
+            
+            request.setAttribute("jobList", jobList);
             request.getRequestDispatcher("job_listing.jsp").forward(request, response);
 
         } catch (Exception e) {

@@ -69,10 +69,15 @@
                     </nav>
                   </div>
                   <!-- Header-btn -->
+                  <%
+                      if(session.getAttribute("userLoggedIn") == null){
+                          
+                  %>
                   <div class="header-btn d-none f-right d-lg-block">
                     <a href="#" class="btn head-btn1">Register</a>
                     <a href="#" class="btn head-btn2">Login</a>
                   </div>
+                  <% }%>
                 </div>
               </div>
               <!-- Mobile Menu -->

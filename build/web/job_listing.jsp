@@ -64,11 +64,9 @@
                   
                   <!-- single-job-content -->
                   <!-- Retrieve the list from the request from jobListing.java -->
-                  <c:forEach var="s" items="${jobList}">
-                      
+                  <c:forEach var="s" items="${jobList}">   
                   
                   <div class="single-job-items mb-30">
-                      <p>${s.jobID}</p>
                     <div class="job-items">
                       <div class="company-img">
                           <!-- the code is to help us keep track of jobID and employerID and send it to the JobDetailsServlet -->

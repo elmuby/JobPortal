@@ -118,7 +118,6 @@
                                 <div class="small-section-tittle">
                                     <h4>Company Information</h4>
                                 </div>
-                                <span>Name:</span>
                                 <p></p>
                                 <ul>
                                     <li>Name: <span>  ${employerName} </span></li>
