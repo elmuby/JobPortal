@@ -1,6 +1,7 @@
 <%@page import="java.sql.*"%>
 <%@page import ="Project.ConnectionProvider" %>
 <%@include file= "header.jsp" %>
+<%@taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
   <head>
@@ -19,6 +20,7 @@
               <div class="col-xl-12">
                 <div class="hero-cap text-center">
                   <h2>Get your job</h2>
+                    
                 </div>
               </div>
             </div> 
@@ -61,32 +63,38 @@
                   
                   
                   <!-- single-job-content -->
+                  <!-- Retrieve the list from the request from jobListing.java -->
+                  <c:forEach var="s" items="${jobList}">
+                      
+                  
                   <div class="single-job-items mb-30">
+                      <p>${s.jobID}</p>
                     <div class="job-items">
                       <div class="company-img">
                           <!-- the code is to help us keep track of jobID and employerID and send it to the JobDetailsServlet -->
-                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${jobID}&employerID=${employerID}"
-                          ><img src="assets/img/icon/job-list1.png" alt=""
+                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}&employerID=${s.employerID}"
+                          ><img src='data:image/png;base64,${s.base64Image}' alt="Company Logo"
                         /></a>
                       </div>
                       <div class="job-tittle job-tittle2">
-                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${jobID}&employerID=${employerID}">
-                          <h4>Digital Marketer</h4>
+                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}&employerID=${s.employerID}">
+                          <h4>${s.jobTitle}</h4>
                         </a>
                         <ul>
-                          <li>Creative Agency</li>
+                          <li>${s.employerName}</li>
                           <li>
-                            <i class="fas fa-map-marker-alt"></i>Athens, Greece
+                            <i class="fas fa-map-marker-alt"></i>${s.location}
                           </li>
-                          <li>$3500 - $4000</li>
+                          <li>${s.salaryRange}</li>
                         </ul>
                       </div>
                     </div>
                     <div class="items-link items-link2 f-right">
                         
-                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=${jobID}&employerID=${employerID}">Full Time</a>
+                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}&employerID=${s.employerID}">${s.jobNature}</a>
                     </div>
                   </div>
+                 </c:forEach>
                 </div>
               </section>
               <!-- Featured_job_end -->

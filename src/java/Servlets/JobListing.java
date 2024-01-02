@@ -6,8 +6,12 @@
 package Servlets;
 
 import Project.ConnectionProvider;
+import Project.JobListBean;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,12 +38,51 @@ public class JobListing extends HttpServlet {
                     + "FORMAT(postedDate, 'd, MMMM yyyy') AS 'PostedDate' From Employer A Join JobDetails B ON B .EmployerID = A.EmployerID order by JobID desc";
             ResultSet rs = statement.executeQuery(joinQuery);
             ResultSet countResult = countStatement.executeQuery(countQuery);
+            //creating arraylist to store the object of joblistbean class
+            List<JobListBean> jobList = new ArrayList<>();
+            
             while(countResult.next() && rs.next()){
                 request.setAttribute("count", countResult.getString("count"));
+                //retrieving from the database
                 String jobID = rs.getString("jobID");
                 String employerID = rs.getString("EmployerID");
-                request.setAttribute("jobID", jobID);
-                request.setAttribute("employerID", employerID);
+                String location = rs.getString("Location");
+                String salaryRange = rs.getString("SalaryRange");
+                String employerName = rs.getString("EmployerName");
+                String jobTitle = rs.getString("JobTitle");
+                String jobNature = rs.getString("JobNature");
+                
+                
+                byte[] imageData = rs.getBytes("company_logo");
+                // Converting image data to Base64
+                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                
+                //creating an object of JobListBean Class
+                JobListBean jobListBean =new JobListBean();
+                //setting the setters fields in the JoblistBean Class
+                jobListBean.setBase64Image(base64Image);
+                jobListBean.setEmployerID(employerID);
+                jobListBean.setJobID(jobID);
+                jobListBean.setEmployerName(employerName);
+                jobListBean.setJobNature(jobNature);
+                jobListBean.setJobTitle(jobTitle);
+                jobListBean.setLocation(location);
+                jobListBean.setSalaryRange(salaryRange);
+                
+                //adding the JobListBean object to the List jobList
+                jobList.add(jobListBean);
+                //sending the list as an attribute to the job_listing.jsp
+                request.setAttribute("jobList", jobList);
+                //
+//                request.setAttribute("base64Image", (base64Image));
+//                
+//                request.setAttribute("location", location );
+//                request.setAttribute("salaryRange",salaryRange );
+//                request.setAttribute("employerName", employerName);
+//                request.setAttribute("jobTitle", jobTitle);
+//                request.setAttribute("jobID", jobID);
+//                request.setAttribute("employerID", employerID);
+//                request.setAttribute("jobNature", jobNature);
             }
             request.getRequestDispatcher("job_listing.jsp").forward(request, response);
 
