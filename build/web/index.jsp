@@ -1,3 +1,4 @@
+<%@page import="java.util.Base64"%>
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import ="Project.ConnectionProvider" %>
@@ -12,6 +13,12 @@
 
    <body>
     <main>
+        <%
+            String query = "select top 3 * from Job order by JobID desc";
+            Connection con = ConnectionProvider.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+        %>
 
         <!-- slider Area Start-->
         <div class="slider-area ">
@@ -221,36 +228,41 @@
                             </div>
                         </div>
                                 -->
-                    <% 
-                    Connection con = ConnectionProvider.getConnection();
-                    %>
+                                <%
+                                    while (rs.next()) {
+                                        byte[] imageData = rs.getBytes("company_logo");
+                                        // Converting image data to Base64
+                                        String base64Image = Base64.getEncoder().encodeToString(imageData);
+                                %>
                     <div class="single-job-items mb-30">
                     <div class="job-items">
                       <div class="company-img">
                           <!-- the code is to help us keep track of jobID and send it to the JobDetailsServlet -->
-                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}"
-                          ><img src='data:image/png;base64,${s.base64Image}' alt="Company Logo"
+                          <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= rs.getString("JobID") %>"
+                             ><img src='data:image/png;base64,<%= base64Image %>' alt="Company Logo"
                         /></a>
                       </div>
                       <div class="job-tittle job-tittle2">
-                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}">
-                          <h4>${s.jobTitle}</h4>
+                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= rs.getString("JobID") %>">
+                            <h4><%=rs.getString("JobTitle") %></h4>
                         </a>
                         <ul>
-                          <li>${s.companyName}</li>
+                            <li><%= rs.getString("CompanyName") %></li>
                           <li>
-                            <i class="fas fa-map-marker-alt"></i>${s.location}
+                            <i class="fas fa-map-marker-alt"></i><%= rs.getString("Location") %>
                           </li>
-                          <li>${s.salaryRange}</li>
+                          <li><%= rs.getString("SalaryRange") %></li>
                         </ul>
                       </div>
                     </div>
                     <div class="items-link items-link2 f-right">
-                        
-                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}">${s.jobNature}</a>
+                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= rs.getString("JobID") %>"> <%= rs.getString("JobNature") %></a>
                     </div>
                   </div>
-                                
+                      <%    
+                          System.out.println(rs.getString("JobNature"));
+                      }
+                      %>                   
                     </div>
                 </div>
             </div>

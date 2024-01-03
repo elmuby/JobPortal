@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.Base64;
+import java.sql.*;
 import Project.ConnectionProvider;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
@@ -48,8 +50,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\n');
-      out.write('\n');
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html class=\"no-js\" lang=\"zxx\">\n");
       out.write("  <head>\n");
@@ -77,6 +81,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/slick.css\" />\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/nice-select.css\" />\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/style.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/personalcss.css\" />\n");
       out.write("  </head>\n");
       out.write("\n");
       out.write("  <body>\n");
@@ -122,10 +127,19 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </nav>\n");
       out.write("                  </div>\n");
       out.write("                  <!-- Header-btn -->\n");
+      out.write("                  ");
+
+                      if(session.getAttribute("userLoggedIn") == null){
+                          
+                  
+      out.write("\n");
       out.write("                  <div class=\"header-btn d-none f-right d-lg-block\">\n");
       out.write("                    <a href=\"#\" class=\"btn head-btn1\">Register</a>\n");
       out.write("                    <a href=\"#\" class=\"btn head-btn2\">Login</a>\n");
       out.write("                  </div>\n");
+      out.write("                  ");
+ }
+      out.write("\n");
       out.write("                </div>\n");
       out.write("              </div>\n");
       out.write("              <!-- Mobile Menu -->\n");
@@ -152,6 +166,14 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("   <body>\n");
       out.write("    <main>\n");
+      out.write("        ");
+
+            String query = "select top 3 * from Job order by JobID desc";
+            Connection con = ConnectionProvider.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+        
+      out.write("\n");
       out.write("\n");
       out.write("        <!-- slider Area Start-->\n");
       out.write("        <div class=\"slider-area \">\n");
@@ -356,7 +378,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("                <div class=\"row justify-content-center\">\n");
       out.write("                    <div class=\"col-xl-10\">\n");
+      out.write("                        \n");
       out.write("                        <!-- single-job-content -->\n");
+      out.write("                        <!--\n");
       out.write("                        <div class=\"single-job-items mb-30\">\n");
       out.write("                            <div class=\"job-items\">\n");
       out.write("                                <div class=\"company-img\">\n");
@@ -382,6 +406,70 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                \n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
+      out.write("                                -->\n");
+      out.write("                                ");
+
+                                    while (rs.next()) {
+                                        byte[] imageData = rs.getBytes("company_logo");
+                                        // Converting image data to Base64
+                                        String base64Image = Base64.getEncoder().encodeToString(imageData);
+                                
+      out.write("\n");
+      out.write("                    <div class=\"single-job-items mb-30\">\n");
+      out.write("                    <div class=\"job-items\">\n");
+      out.write("                      <div class=\"company-img\">\n");
+      out.write("                          <!-- the code is to help us keep track of jobID and send it to the JobDetailsServlet -->\n");
+      out.write("                          <a href=\"");
+      out.print( request.getContextPath());
+      out.write("/JobDetails?jobID=");
+      out.print( rs.getString("JobID") );
+      out.write("\"\n");
+      out.write("                             ><img src='data:image/png;base64,");
+      out.print( base64Image );
+      out.write("' alt=\"Company Logo\"\n");
+      out.write("                        /></a>\n");
+      out.write("                      </div>\n");
+      out.write("                      <div class=\"job-tittle job-tittle2\">\n");
+      out.write("                        <a href=\"");
+      out.print( request.getContextPath());
+      out.write("/JobDetails?jobID=");
+      out.print( rs.getString("JobID") );
+      out.write("\">\n");
+      out.write("                            <h4>");
+      out.print(rs.getString("JobTitle") );
+      out.write("</h4>\n");
+      out.write("                        </a>\n");
+      out.write("                        <ul>\n");
+      out.write("                            <li>");
+      out.print( rs.getString("CompanyName") );
+      out.write("</li>\n");
+      out.write("                          <li>\n");
+      out.write("                            <i class=\"fas fa-map-marker-alt\"></i>");
+      out.print( rs.getString("Location") );
+      out.write("\n");
+      out.write("                          </li>\n");
+      out.write("                          <li>");
+      out.print( rs.getString("SalaryRange") );
+      out.write("</li>\n");
+      out.write("                        </ul>\n");
+      out.write("                      </div>\n");
+      out.write("                    </div>\n");
+      out.write("                    <div class=\"items-link items-link2 f-right\">\n");
+      out.write("                        \n");
+      out.write("                      <a href=\"");
+      out.print( request.getContextPath());
+      out.write("/JobDetails?jobID=");
+      out.print( rs.getString("JobID") );
+      out.write('"');
+      out.print( rs.getString("JobNature") );
+      out.write("</a>\n");
+      out.write("                    </div>\n");
+      out.write("                  </div>\n");
+      out.write("                      ");
+      
+                      }
+                      
+      out.write("                   \n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
