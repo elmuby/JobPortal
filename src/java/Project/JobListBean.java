@@ -13,12 +13,11 @@ public class JobListBean {
 
     private String base64Image;
     private String jobID;
-    private String employerID;
     private String jobNature;
     private String jobTitle;
     private String location;
     private String salaryRange;
-    private String employerName;
+    private String companyName;
     
     public JobListBean(){
         super();
@@ -40,13 +39,6 @@ public class JobListBean {
         this.jobID = jobID;
     }
 
-    public String getEmployerID() {
-        return employerID;
-    }
-
-    public void setEmployerID(String employerID) {
-        this.employerID = employerID;
-    }
 
     public String getJobNature() {
         return jobNature;
@@ -80,12 +72,12 @@ public class JobListBean {
         this.salaryRange = salaryRange;
     }
 
-    public String getEmployerName() {
-        return employerName;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setEmployerName(String employerName) {
-        this.employerName = employerName;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
     
 }

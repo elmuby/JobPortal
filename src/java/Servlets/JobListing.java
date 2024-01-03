@@ -35,12 +35,11 @@ public class JobListing extends HttpServlet {
             Connection con = ConnectionProvider.getConnection();
             Statement statement = con.createStatement();
             Statement countStatement = con.createStatement();
-            String countQuery = "SELECT COUNT(*) As 'count' FROM JobDetails";
-            String joinQuery = "SELECT B.EmployerID, EmployerName, company_logo, website, Email, JobID, JobTitle, B.Location, JobNature,"
-                    + "  SalaryRange, JobDescription, RequiredKnowledge, EducationNExperience,vacancy ,ApplicationDate ,"
-                    + "FORMAT(postedDate, 'd, MMMM yyyy') AS 'PostedDate' From Employer A Join JobDetails B ON B .EmployerID = A.EmployerID order by JobID desc";
-            ResultSet rs = statement.executeQuery(joinQuery);
+            String countQuery = "SELECT COUNT(*) As 'count' FROM Job";
+            String query = "select *, FORMAT(postedDate, 'd, MMMM yyyy') AS 'Date' from Job";
+            ResultSet rs = statement.executeQuery(query);
             ResultSet countResult = countStatement.executeQuery(countQuery);
+            
             //creating arraylist to store the object of joblistbean class
             List<JobListBean> jobList = new ArrayList<>();
             while(countResult.next()){
@@ -49,11 +48,10 @@ public class JobListing extends HttpServlet {
             while (rs.next()) {
                 
                 //retrieving from the database
-                String jobID = rs.getString("jobID");
-                String employerID = rs.getString("EmployerID");
+                String jobID = rs.getString("JobID");
                 String location = rs.getString("Location");
                 String salaryRange = rs.getString("SalaryRange");
-                String employerName = rs.getString("EmployerName");
+                String companyName = rs.getString("CompanyName");
                 String jobTitle = rs.getString("JobTitle");
                 String jobNature = rs.getString("JobNature");
 
@@ -65,9 +63,8 @@ public class JobListing extends HttpServlet {
                 JobListBean jobListBean = new JobListBean();
                 //setting the setters fields in the JoblistBean Class
                 jobListBean.setBase64Image(base64Image);
-                jobListBean.setEmployerID(employerID);
                 jobListBean.setJobID(jobID);
-                jobListBean.setEmployerName(employerName);
+                jobListBean.setCompanyName(companyName);
                 jobListBean.setJobNature(jobNature);
                 jobListBean.setJobTitle(jobTitle);
                 jobListBean.setLocation(location);

@@ -49,9 +49,9 @@
                                              <!---->
                                     </div>
                                     <div class="job-tittle">
-                                        <a href="">
+                                       
                                             <h4>${jobTitle}</h4>
-                                        </a>
+                                        
                                         <ul>
                                             <li> ${employerName} </li>
                                             <li>${location} <i class="fas fa-map-marker-alt"></i></li>
