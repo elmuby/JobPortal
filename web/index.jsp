@@ -206,34 +206,12 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-10">
                         
-                        <!-- single-job-content -->
-                        <!--
-                        <div class="single-job-items mb-30">
-                            <div class="job-items">
-                                <div class="company-img">
-                                    <a href="<%= request.getContextPath()%>/JobDetails"><img src="assets/img/icon/job-list1.png" alt=""></a>
-                                </div>
-                                <div class="job-tittle">
-                                    <a href="<%= request.getContextPath()%>/JobDetails"><h4>Digital Marketer</h4></a>
-                                    <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="items-link f-right">
-                                <a href="<%= request.getContextPath()%>/JobDetails">Full Time</a>
-                                
-                            </div>
-                        </div>
-                                -->
-                                <%
-                                    while (rs.next()) {
-                                        byte[] imageData = rs.getBytes("company_logo");
-                                        // Converting image data to Base64
-                                        String base64Image = Base64.getEncoder().encodeToString(imageData);
-                                %>
+                        <%
+                            while (rs.next()) {
+                                byte[] imageData = rs.getBytes("company_logo");
+                                // Converting image data to Base64
+                                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                        %>
                     <div class="single-job-items mb-30">
                     <div class="job-items">
                       <div class="company-img">

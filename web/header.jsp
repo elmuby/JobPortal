@@ -74,8 +74,12 @@
                           
                   %>
                   <div class="header-btn d-none f-right d-lg-block">
-                    <a href="#" class="btn head-btn1">Register</a>
-                    <a href="#" class="btn head-btn2">Login</a>
+                    <a href="signup.jsp" class="btn head-btn1">Register</a>
+                    <a href="signin.jsp" class="btn head-btn2">Login</a>
+                  </div>
+                  <% } else{%>
+                  <div class="header-btn d-none f-right d-lg-block">
+                    <a href="signin.jsp" class="btn head-btn1">Sign Out</a>
                   </div>
                   <% }%>
                 </div>

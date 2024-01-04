@@ -30,8 +30,6 @@ public class JobListing extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            HttpSession session = request.getSession();
-            session.setAttribute("userLoggedIn", "allowed");
             Connection con = ConnectionProvider.getConnection();
             Statement statement = con.createStatement();
             Statement countStatement = con.createStatement();

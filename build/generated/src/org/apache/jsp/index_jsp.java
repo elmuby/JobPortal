@@ -134,8 +134,14 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
                   
       out.write("\n");
       out.write("                  <div class=\"header-btn d-none f-right d-lg-block\">\n");
-      out.write("                    <a href=\"#\" class=\"btn head-btn1\">Register</a>\n");
-      out.write("                    <a href=\"#\" class=\"btn head-btn2\">Login</a>\n");
+      out.write("                    <a href=\"signup.jsp\" class=\"btn head-btn1\">Register</a>\n");
+      out.write("                    <a href=\"signin.jsp\" class=\"btn head-btn2\">Login</a>\n");
+      out.write("                  </div>\n");
+      out.write("                  ");
+ } else{
+      out.write("\n");
+      out.write("                  <div class=\"header-btn d-none f-right d-lg-block\">\n");
+      out.write("                    <a href=\"signin.jsp\" class=\"btn head-btn1\">Sign Out</a>\n");
       out.write("                  </div>\n");
       out.write("                  ");
  }
@@ -379,41 +385,13 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"row justify-content-center\">\n");
       out.write("                    <div class=\"col-xl-10\">\n");
       out.write("                        \n");
-      out.write("                        <!-- single-job-content -->\n");
-      out.write("                        <!--\n");
-      out.write("                        <div class=\"single-job-items mb-30\">\n");
-      out.write("                            <div class=\"job-items\">\n");
-      out.write("                                <div class=\"company-img\">\n");
-      out.write("                                    <a href=\"");
-      out.print( request.getContextPath());
-      out.write("/JobDetails\"><img src=\"assets/img/icon/job-list1.png\" alt=\"\"></a>\n");
-      out.write("                                </div>\n");
-      out.write("                                <div class=\"job-tittle\">\n");
-      out.write("                                    <a href=\"");
-      out.print( request.getContextPath());
-      out.write("/JobDetails\"><h4>Digital Marketer</h4></a>\n");
-      out.write("                                    <ul>\n");
-      out.write("                                        <li>Creative Agency</li>\n");
-      out.write("                                        <li><i class=\"fas fa-map-marker-alt\"></i>Athens, Greece</li>\n");
-      out.write("                                        <li>$3500 - $4000</li>\n");
-      out.write("                                    </ul>\n");
-      out.write("                                </div>\n");
-      out.write("                            </div>\n");
-      out.write("                            <div class=\"items-link f-right\">\n");
-      out.write("                                <a href=\"");
-      out.print( request.getContextPath());
-      out.write("/JobDetails\">Full Time</a>\n");
-      out.write("                                \n");
-      out.write("                            </div>\n");
-      out.write("                        </div>\n");
-      out.write("                                -->\n");
-      out.write("                                ");
+      out.write("                        ");
 
-                                    while (rs.next()) {
-                                        byte[] imageData = rs.getBytes("company_logo");
-                                        // Converting image data to Base64
-                                        String base64Image = Base64.getEncoder().encodeToString(imageData);
-                                
+                            while (rs.next()) {
+                                byte[] imageData = rs.getBytes("company_logo");
+                                // Converting image data to Base64
+                                String base64Image = Base64.getEncoder().encodeToString(imageData);
+                        
       out.write("\n");
       out.write("                    <div class=\"single-job-items mb-30\">\n");
       out.write("                    <div class=\"job-items\">\n");
@@ -455,18 +433,18 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                      </div>\n");
       out.write("                    </div>\n");
       out.write("                    <div class=\"items-link items-link2 f-right\">\n");
-      out.write("                        \n");
       out.write("                      <a href=\"");
       out.print( request.getContextPath());
       out.write("/JobDetails?jobID=");
       out.print( rs.getString("JobID") );
-      out.write('"');
+      out.write("\"> ");
       out.print( rs.getString("JobNature") );
       out.write("</a>\n");
       out.write("                    </div>\n");
       out.write("                  </div>\n");
       out.write("                      ");
-      
+    
+                          System.out.println(rs.getString("JobNature"));
                       }
                       
       out.write("                   \n");
