@@ -14,10 +14,10 @@
    <body>
     <main>
         <%
-            String query = "select top 3 * from Job order by JobID desc";
+            String query = "select JobID, A.EmployerID, JobTitle, JobLocation, Salary, CompanyName, company_logo, JobNature from Job A join Employer B ON A.EmployerID = B.EmployerID";
             Connection con = ConnectionProvider.getConnection();
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+            ResultSet r_s = statement.executeQuery(query);
         %>
 
         <!-- slider Area Start-->
@@ -81,7 +81,7 @@
                                 <span class="flaticon-tour"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="<%= request.getContextPath()%>/JobListing">Design & Creative</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/Profile">Design & Creative</a></h5>
                                 <span>(653)</span>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                                 <span class="flaticon-cms"></span>
                             </div>
                             <div class="services-cap">
-                               <h5><a href="<%= request.getContextPath()%>/JobListing">Design & Development</a></h5>
+                               <h5><a href="<%= request.getContextPath()%>/Profile">Design & Development</a></h5>
                                 <span>(658)</span>
                             </div>
                         </div>
@@ -207,8 +207,8 @@
                     <div class="col-xl-10">
                         
                         <%
-                            while (rs.next()) {
-                                byte[] imageData = rs.getBytes("company_logo");
+                            if (r_s.next()) {
+                                byte[] imageData = r_s.getBytes("company_logo");
                                 // Converting image data to Base64
                                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                         %>
@@ -216,29 +216,30 @@
                     <div class="job-items">
                       <div class="company-img">
                           <!-- the code is to help us keep track of jobID and send it to the JobDetailsServlet -->
-                          <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= rs.getString("JobID") %>"
+                          <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= r_s.getString("JobID") %>&employerID=<%=r_s.getString("EmployerID") %>"
                              ><img src='data:image/png;base64,<%= base64Image %>' alt="Company Logo"
                         /></a>
                       </div>
                       <div class="job-tittle job-tittle2">
-                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= rs.getString("JobID") %>">
-                            <h4><%=rs.getString("JobTitle") %></h4>
+                          <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%=r_s.getString("JobID")%>&employerID=<%=r_s.getString("EmployerID") %> ">
+                            <h4><%=r_s.getString("JobTitle") %></h4>
                         </a>
                         <ul>
-                            <li><%= rs.getString("CompanyName") %></li>
+                            <li><%= r_s.getString("CompanyName") %></li>
                           <li>
-                            <i class="fas fa-map-marker-alt"></i><%= rs.getString("Location") %>
+                            <i class="fas fa-map-marker-alt"></i><%= r_s.getString("jobLocation") %>
                           </li>
-                          <li><%= rs.getString("SalaryRange") %></li>
+                          <li><%= r_s.getString("Salary") %></li>
                         </ul>
                       </div>
                     </div>
                     <div class="items-link items-link2 f-right">
-                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= rs.getString("JobID") %>"> <%= rs.getString("JobNature") %></a>
+                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=<%= r_s.getString("JobID") %>&employerID=<%=r_s.getString("EmployerID") %>"> <%= r_s.getString("JobNature") %></a>
                     </div>
                   </div>
                       <%    
-                          System.out.println(rs.getString("JobNature"));
+                          System.out.println(r_s.getString("JobNature"));
+                          System.out.println(r_s.getString("EmployerID"));
                       }
                       %>                   
                     </div>
@@ -375,7 +376,7 @@
                             <div class="support-caption">
                                 <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>
                                 <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
-                                <a href="about.jsp" class="btn post-btn">Post a job</a>
+                                <a href="<%= request.getContextPath()%>/post_a_job?employerID=<%= r_s.getString("EmployerID") %>" class="btn post-btn">Post a job</a>
                             </div>
                         </div>
                     </div>
