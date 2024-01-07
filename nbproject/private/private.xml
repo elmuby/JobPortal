@@ -3,18 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Project/JobListBean.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/assets/css/signin.css</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/JobListing.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/Profile.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/index.jsp</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/JobDetails.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/signin.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/signup.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Project/ConnectionProvider.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/edit_profile.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/job_details.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/job_listing.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/EditProfileAction.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/Setup_Profile.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/profile.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/JobListing.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/signout.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/signin.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/header.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/job_listing.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/job_details.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/EditProfile.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/src/java/Servlets/post_job.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/JobPortal/JobPortal/web/post_a_job.jsp</file>
         </group>
     </open-files>
 </project-private>

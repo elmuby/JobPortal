@@ -18,6 +18,15 @@ public class JobListBean {
     private String location;
     private String salaryRange;
     private String companyName;
+    private String employerID;
+
+    public String getEmployerID() {
+        return employerID;
+    }
+
+    public void setEmployerID(String employerID) {
+        this.employerID = employerID;
+    }
     
     public JobListBean(){
         super();

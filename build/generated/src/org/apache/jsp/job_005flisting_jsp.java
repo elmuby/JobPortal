@@ -19,7 +19,7 @@ public final class job_005flisting_jsp extends org.apache.jasper.runtime.HttpJsp
     _jspx_dependants.add("/footer.jsp");
   }
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_out_value_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -28,11 +28,11 @@ public final class job_005flisting_jsp extends org.apache.jasper.runtime.HttpJsp
   }
 
   public void _jspInit() {
-    _jspx_tagPool_c_out_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
-    _jspx_tagPool_c_out_value_nobody.release();
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -89,6 +89,7 @@ public final class job_005flisting_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/nice-select.css\" />\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/style.css\" />\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/personalcss.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/fonts.css\" />\n");
       out.write("  </head>\n");
       out.write("\n");
       out.write("  <body>\n");
@@ -134,10 +135,25 @@ public final class job_005flisting_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                    </nav>\n");
       out.write("                  </div>\n");
       out.write("                  <!-- Header-btn -->\n");
+      out.write("                  ");
+
+                      if(session.getAttribute("userLoggedIn") == null){
+                          
+                  
+      out.write("\n");
       out.write("                  <div class=\"header-btn d-none f-right d-lg-block\">\n");
-      out.write("                    <a href=\"#\" class=\"btn head-btn1\">Register</a>\n");
-      out.write("                    <a href=\"#\" class=\"btn head-btn2\">Login</a>\n");
+      out.write("                    <a href=\"signup.jsp\" class=\"btn head-btn1\">Register</a>\n");
+      out.write("                    <a href=\"signin.jsp\" class=\"btn head-btn2\">Login</a>\n");
       out.write("                  </div>\n");
+      out.write("                  ");
+ } else{
+      out.write("\n");
+      out.write("                  <div class=\"header-btn d-none f-right d-lg-block\">\n");
+      out.write("                    <a href=\"signin.jsp\" class=\"btn head-btn1\">Sign Out</a>\n");
+      out.write("                  </div>\n");
+      out.write("                  ");
+ }
+      out.write("\n");
       out.write("                </div>\n");
       out.write("              </div>\n");
       out.write("              <!-- Mobile Menu -->\n");
@@ -173,10 +189,6 @@ public final class job_005flisting_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("              <div class=\"col-xl-12\">\n");
       out.write("                <div class=\"hero-cap text-center\">\n");
       out.write("                  <h2>Get your job</h2>\n");
-      out.write("                  ");
-      if (_jspx_meth_c_out_0(_jspx_page_context))
-        return;
-      out.write("\n");
       out.write("                    \n");
       out.write("                </div>\n");
       out.write("              </div>\n");
@@ -226,63 +238,96 @@ public final class job_005flisting_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                  \n");
       out.write("                  \n");
       out.write("                  <!-- single-job-content -->\n");
-      out.write("                  <div class=\"single-job-items mb-30\">\n");
-      out.write("                    <div class=\"job-items\">\n");
-      out.write("                      <div class=\"company-img\">\n");
-      out.write("                          <!-- the code is to help us keep track of jobID and employerID and send it to the JobDetailsServlet -->\n");
-      out.write("                        <a href=\"");
-      out.print( request.getContextPath());
-      out.write("/JobDetails?jobID=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${jobID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("&employerID=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${employerID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\"\n");
-      out.write("                          ><img src='data:image/png;base64,");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${base64Image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("' alt=\"Company Logo\"\n");
-      out.write("                        /></a>\n");
-      out.write("                      </div>\n");
-      out.write("                      <div class=\"job-tittle job-tittle2\">\n");
-      out.write("                        <a href=\"");
-      out.print( request.getContextPath());
-      out.write("/JobDetails?jobID=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${jobID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("&employerID=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${employerID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\n");
-      out.write("                          <h4>");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${jobTitle}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</h4>\n");
-      out.write("                        </a>\n");
-      out.write("                        <ul>\n");
-      out.write("                          <li>");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${employerName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</li>\n");
-      out.write("                          <li>\n");
-      out.write("                            <i class=\"fas fa-map-marker-alt\"></i>");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("                  <!-- Retrieve the list from the request from jobListing.java -->\n");
+      out.write("                  ");
+      //  c:forEach
+      org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+      _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+      _jspx_th_c_forEach_0.setParent(null);
+      _jspx_th_c_forEach_0.setVar("s");
+      _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${jobList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+      int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+      try {
+        int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+        if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+          do {
+            out.write("   \n");
+            out.write("                  \n");
+            out.write("                  <div class=\"single-job-items mb-30\">\n");
+            out.write("                    <div class=\"job-items\">\n");
+            out.write("                      <div class=\"company-img\">\n");
+            out.write("                          <!-- the code is to help us keep track of jobID and send it to the JobDetailsServlet -->\n");
+            out.write("                        <a href=\"");
+            out.print( request.getContextPath());
+            out.write("/JobDetails?jobID=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.jobID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("&employerID=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.employerID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("\"\n");
+            out.write("                          ><img src='data:image/png;base64,");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.base64Image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("' alt=\"Company Logo\"\n");
+            out.write("                        /></a>\n");
+            out.write("                      </div>\n");
+            out.write("                      <div class=\"job-tittle job-tittle2\">\n");
+            out.write("                        <a href=\"");
+            out.print( request.getContextPath());
+            out.write("/JobDetails?jobID=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.jobID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("&employerID=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.employerID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("\">\n");
+            out.write("                          <h4>");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.jobTitle}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("</h4>\n");
+            out.write("                        </a>\n");
+            out.write("                        <ul>\n");
+            out.write("                          <li>");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.companyName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("</li>\n");
+            out.write("                          <li>\n");
+            out.write("                            <i class=\"fas fa-map-marker-alt\"></i>");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.location}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("\n");
+            out.write("                          </li>\n");
+            out.write("                          <li>");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.salaryRange}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("</li>\n");
+            out.write("                        </ul>\n");
+            out.write("                      </div>\n");
+            out.write("                    </div>\n");
+            out.write("                    <div class=\"items-link items-link2 f-right\">\n");
+            out.write("                        \n");
+            out.write("                      <a href=\"");
+            out.print( request.getContextPath());
+            out.write("/JobDetails?jobID=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.jobID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("&employerID=");
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.employerID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write('"');
+            out.write('>');
+            out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.jobNature}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+            out.write("</a>\n");
+            out.write("                    </div>\n");
+            out.write("                  </div>\n");
+            out.write("                 ");
+            int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+            if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+              break;
+          } while (true);
+        }
+        if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+          return;
+        }
+      } catch (Throwable _jspx_exception) {
+        while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+          out = _jspx_page_context.popBody();
+        _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+      } finally {
+        _jspx_th_c_forEach_0.doFinally();
+        _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+      }
       out.write("\n");
-      out.write("                          </li>\n");
-      out.write("                          <li>");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${salaryRange}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</li>\n");
-      out.write("                        </ul>\n");
-      out.write("                      </div>\n");
-      out.write("                    </div>\n");
-      out.write("                    <div class=\"items-link items-link2 f-right\">\n");
-      out.write("                        \n");
-      out.write("                      <a href=\"");
-      out.print( request.getContextPath());
-      out.write("/JobDetails?jobID=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${jobID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("&employerID=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${employerID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write('"');
-      out.write('>');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${jobNature}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</a>\n");
-      out.write("                    </div>\n");
-      out.write("                  </div>\n");
       out.write("                </div>\n");
       out.write("              </section>\n");
       out.write("              <!-- Featured_job_end -->\n");
@@ -536,23 +581,5 @@ public final class job_005flisting_jsp extends org.apache.jasper.runtime.HttpJsp
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
-  }
-
-  private boolean _jspx_meth_c_out_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_out_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_out_0.setParent(null);
-    _jspx_th_c_out_0.setValue(new String("hello world are you okay"));
-    int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
-    if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
-      return true;
-    }
-    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
-    return false;
   }
 }

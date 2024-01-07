@@ -63,6 +63,7 @@
                   
                   
                   <!-- single-job-content -->
+                  
                   <!-- Retrieve the list from the request from jobListing.java -->
                   <c:forEach var="s" items="${jobList}">   
                   
@@ -70,12 +71,12 @@
                     <div class="job-items">
                       <div class="company-img">
                           <!-- the code is to help us keep track of jobID and send it to the JobDetailsServlet -->
-                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}"
+                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}&employerID=${s.employerID}"
                           ><img src='data:image/png;base64,${s.base64Image}' alt="Company Logo"
                         /></a>
                       </div>
                       <div class="job-tittle job-tittle2">
-                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}">
+                        <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}&employerID=${s.employerID}">
                           <h4>${s.jobTitle}</h4>
                         </a>
                         <ul>
@@ -89,7 +90,7 @@
                     </div>
                     <div class="items-link items-link2 f-right">
                         
-                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}">${s.jobNature}</a>
+                      <a href="<%= request.getContextPath()%>/JobDetails?jobID=${s.jobID}&employerID=${s.employerID}">${s.jobNature}</a>
                     </div>
                   </div>
                  </c:forEach>

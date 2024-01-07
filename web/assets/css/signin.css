@@ -5,12 +5,13 @@
 
         @font-face {
             font-family: Futura;
-            src: url(./fonts/Futura\ Round.ttf);
+            src: url(assets/fonts/Futura\ Round.ttf);
         }
 
         @font-face {
             font-family: Barlow;
-            src: url(./fonts/BarlowCondensed-Regular.otf);
+            src: url(assets/fonts/BarlowCondensed-Regular.otf);
+            
         }
 
         body {

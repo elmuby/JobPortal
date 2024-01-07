@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +43,6 @@ public class signin extends HttpServlet {
             try {
 
                 Connection con = ConnectionProvider.getConnection();
-                System.out.println("succesfull");
 
                 String sql = "SELECT * FROM [dbo].[user] where Email = ? AND password = ?";
 
@@ -58,10 +58,37 @@ public class signin extends HttpServlet {
                     ResultSet rs = ps.executeQuery();
 
                     if (rs.next()) {
+                        System.out.println("succesfully");
                         HttpSession session = request.getSession();
                         int id = rs.getInt("Userid");
-                        session.setAttribute("userLoggedIn", id);
-                        response.sendRedirect("index.jsp");
+
+                        String sql2 = "SELECT [USERID], EmployerID, UserRole from [user] join Employer On [USERID] = EmployerID WHERE UserID = " + id;
+                        Statement stmnt = con.createStatement();
+                        ResultSet rs2 = stmnt.executeQuery(sql2);
+                        if (!rs2.next()) {
+                            String sql3 = "SELECT UserRole FROM [user] WHERE UserID = " + id;
+                            Statement stmnt3 = con.createStatement();
+                            ResultSet rs3 = stmnt3.executeQuery(sql3);
+                            while (rs3.next()) {
+                                String role = rs3.getString("UserRole");
+                                if (role.equalsIgnoreCase("Employer")) {
+                                    request.setAttribute("id", id);
+                                    RequestDispatcher rd = request.getRequestDispatcher("setup_profile.jsp");
+                                    rd.forward(request, response);
+
+                                } else {
+                                    response.sendRedirect("index.jsp");
+                                    session.setAttribute("id", id);
+
+                                }
+                            }
+
+                        } else {
+                            System.out.println("lol");
+                            response.sendRedirect("index.jsp");
+                            session.setAttribute("id", id);
+                        }
+
                     } else {
                         request.setAttribute("errorMessage", "Invalid username or password");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("signin.jsp");
@@ -77,7 +104,7 @@ public class signin extends HttpServlet {
                 out.print(e);
             }
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

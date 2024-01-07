@@ -88,7 +88,7 @@
                                         <h4>Education + Experience</h4>
                                     </div>
                                     <ul>
-                                        <li>${educationNExperience} </li>
+                                        <li>{educationNExperience} </li>
                                     </ul>
                                 </div>
                             </div>

@@ -1,3 +1,8 @@
+<%@page import="java.sql.*"%>
+<%@page import="Project.ConnectionProvider"%>
+<%@page import="java.util.Base64"%>
+
+<%--<%@page errorPage="error.jsp" %>--%>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
   <head>
@@ -26,6 +31,7 @@
     <link rel="stylesheet" href="assets/css/nice-select.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/personalcss.css" />
+    <link rel="stylesheet" href="assets/css/fonts.css" />
   </head>
 
   <body>
@@ -48,12 +54,57 @@
           <div class="container">
             <div class="row align-items-center">
               <div class="col-lg-3 col-md-2">
-                <!-- Logo -->
+                  
+               
+
+        <!-- Logo -->
+        <%
+            Connection connection = ConnectionProvider.getConnection();
+            String sQuery = "SELECT * FROM Employer WHERE EmployerID = ?";
+            session = request.getSession();
+            if (session.getAttribute("id") != null) {
+                try {
+                    String id = session.getAttribute("id").toString();
+                    PreparedStatement ps = connection.prepareStatement(sQuery);
+                    ps.setString(1, id);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        // Retrieving image data as bytes
+                        byte[] imageData = rs.getBytes("company_logo");
+                        // Converting image data to Base64
+                        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        %>          
+                    <div class="logo" style="width: 100px; right:10px; ">
+                        <a href="<%= request.getContextPath()%>/Profile?EmployerID=<%= rs.getString("EmployerID") %>"
+                           ><img style="width:100%; object-position: center;  " src='data:image/png;base64, <%= base64Image %>' alt=""
+                              /></a>
+                    </div>
+        <%  } else{ %>
                 <div class="logo">
-                  <a href="index.jsp"
-                    ><img src="assets/img/logo/logo.png" alt=""
+                    <a href="index.jsp"
+                       ><img src="assets/img/logo/logo.png" alt=""
+                          /></a>
+                    </div>
+                   <%   }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+          }
+      } else { %>
+        <div class="logo">
+            <a href="index.jsp"
+               ><img src="assets/img/logo/logo.png" alt=""
                   /></a>
-                </div>
+        </div>
+        <% }%>
+
+                
+                
+                
+                
+                
+                
+                
               </div>
               <div class="col-lg-9 col-md-9">
                 <div class="menu-wrapper">
@@ -70,7 +121,7 @@
                   </div>
                   <!-- Header-btn -->
                   <%
-                      if(session.getAttribute("userLoggedIn") == null){
+                      if(session.getAttribute("id") == null){
                           
                   %>
                   <div class="header-btn d-none f-right d-lg-block">
@@ -79,7 +130,7 @@
                   </div>
                   <% } else{%>
                   <div class="header-btn d-none f-right d-lg-block">
-                    <a href="signin.jsp" class="btn head-btn1">Sign Out</a>
+                    <a href="<%= request.getContextPath()%>/signout" class="btn head-btn1">Sign Out</a>
                   </div>
                   <% }%>
                 </div>

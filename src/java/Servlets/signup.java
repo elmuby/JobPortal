@@ -30,16 +30,18 @@ public class signup extends HttpServlet {
 
                 Connection con = ConnectionProvider.getConnection();
                 System.out.println("succesfull");
-                String sql = "INSERT INTO [dbo].[user] (Fullname, Email, Password) values (?, ?, ?) ";
+                String sql = "INSERT INTO [dbo].[user] (Fullname, Email, Password, UserRole) values (?, ?, ?, ?) ";
                 //extract the values from the sign up form
                 String name = request.getParameter("name");
                 String pass = request.getParameter("pass");
                 String email = request.getParameter("email");
+                String role = request.getParameter("role");
 
                 try (PreparedStatement ps = con.prepareStatement(sql)) {
                     ps.setString(1, name);
                     ps.setString(2, email);
                     ps.setString(3, pass);
+                    ps.setString(4, role);
 
                     //executing the query
                     int rowsAffected = ps.executeUpdate();

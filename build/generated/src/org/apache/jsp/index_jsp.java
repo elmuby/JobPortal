@@ -6,6 +6,9 @@ import javax.servlet.jsp.*;
 import java.util.Base64;
 import java.sql.*;
 import Project.ConnectionProvider;
+import java.sql.*;
+import Project.ConnectionProvider;
+import java.util.Base64;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -20,10 +23,26 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants.add("/footer.jsp");
   }
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_query_var_dataSource;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_sql_setDataSource_var_url_driver_nobody;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_sql_query_var_dataSource = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_sql_setDataSource_var_url_driver_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_items.release();
+    _jspx_tagPool_sql_query_var_dataSource.release();
+    _jspx_tagPool_sql_setDataSource_var_url_driver_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -50,6 +69,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -82,6 +106,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/nice-select.css\" />\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/style.css\" />\n");
       out.write("    <link rel=\"stylesheet\" href=\"assets/css/personalcss.css\" />\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/fonts.css\" />\n");
       out.write("  </head>\n");
       out.write("\n");
       out.write("  <body>\n");
@@ -104,12 +129,71 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("          <div class=\"container\">\n");
       out.write("            <div class=\"row align-items-center\">\n");
       out.write("              <div class=\"col-lg-3 col-md-2\">\n");
-      out.write("                <!-- Logo -->\n");
+      out.write("                  \n");
+      out.write("               \n");
+      out.write("\n");
+      out.write("        <!-- Logo -->\n");
+      out.write("        ");
+
+            Connection connection = ConnectionProvider.getConnection();
+            String sQuery = "SELECT * FROM Employer WHERE EmployerID = ?";
+            session = request.getSession();
+            if (session.getAttribute("id") != null) {
+                try {
+                    String id = session.getAttribute("id").toString();
+                    PreparedStatement ps = connection.prepareStatement(sQuery);
+                    ps.setString(1, id);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        // Retrieving image data as bytes
+                        byte[] imageData = rs.getBytes("company_logo");
+                        // Converting image data to Base64
+                        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        
+      out.write("          \n");
+      out.write("                    <div class=\"logo\" style=\"width: 100px; right:10px; \">\n");
+      out.write("                        <a href=\"");
+      out.print( request.getContextPath());
+      out.write("/Profile?EmployerID=");
+      out.print( rs.getString("EmployerID") );
+      out.write("\"\n");
+      out.write("                           ><img style=\"width:100%; object-position: center;  \" src='data:image/png;base64, ");
+      out.print( base64Image );
+      out.write("' alt=\"\"\n");
+      out.write("                              /></a>\n");
+      out.write("                    </div>\n");
+      out.write("        ");
+  } else{ 
+      out.write("\n");
       out.write("                <div class=\"logo\">\n");
-      out.write("                  <a href=\"index.jsp\"\n");
-      out.write("                    ><img src=\"assets/img/logo/logo.png\" alt=\"\"\n");
+      out.write("                    <a href=\"index.jsp\"\n");
+      out.write("                       ><img src=\"assets/img/logo/logo.png\" alt=\"\"\n");
+      out.write("                          /></a>\n");
+      out.write("                    </div>\n");
+      out.write("                   ");
+   }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+          }
+      } else { 
+      out.write("\n");
+      out.write("        <div class=\"logo\">\n");
+      out.write("            <a href=\"index.jsp\"\n");
+      out.write("               ><img src=\"assets/img/logo/logo.png\" alt=\"\"\n");
       out.write("                  /></a>\n");
-      out.write("                </div>\n");
+      out.write("        </div>\n");
+      out.write("        ");
+ }
+      out.write("\n");
+      out.write("\n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
       out.write("              </div>\n");
       out.write("              <div class=\"col-lg-9 col-md-9\">\n");
       out.write("                <div class=\"menu-wrapper\">\n");
@@ -129,7 +213,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                  <!-- Header-btn -->\n");
       out.write("                  ");
 
-                      if(session.getAttribute("userLoggedIn") == null){
+                      if(session.getAttribute("id") == null){
                           
                   
       out.write("\n");
@@ -141,7 +225,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
  } else{
       out.write("\n");
       out.write("                  <div class=\"header-btn d-none f-right d-lg-block\">\n");
-      out.write("                    <a href=\"signin.jsp\" class=\"btn head-btn1\">Sign Out</a>\n");
+      out.write("                    <a href=\"");
+      out.print( request.getContextPath());
+      out.write("/signout\" class=\"btn head-btn1\">Sign Out</a>\n");
       out.write("                  </div>\n");
       out.write("                  ");
  }
@@ -162,6 +248,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  </body>\n");
       out.write("</html>\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!doctype html>\n");
       out.write("<html class=\"no-js\" lang=\"zxx\">\n");
       out.write("    <head>\n");
@@ -174,10 +262,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <main>\n");
       out.write("        ");
 
-            String query = "select top 3 * from Job order by JobID desc";
+            String query = "select JobID, A.EmployerID, JobTitle, JobLocation, Salary, CompanyName, company_logo, JobNature from Job A join Employer B ON A.EmployerID = B.EmployerID";
             Connection con = ConnectionProvider.getConnection();
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+            ResultSet r_s = statement.executeQuery(query);
         
       out.write("\n");
       out.write("\n");
@@ -244,7 +332,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <div class=\"services-cap\">\n");
       out.write("                               <h5><a href=\"");
       out.print( request.getContextPath());
-      out.write("/JobListing\">Design & Creative</a></h5>\n");
+      out.write("/Profile\">Design & Creative</a></h5>\n");
       out.write("                                <span>(653)</span>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
@@ -257,7 +345,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <div class=\"services-cap\">\n");
       out.write("                               <h5><a href=\"");
       out.print( request.getContextPath());
-      out.write("/JobListing\">Design & Development</a></h5>\n");
+      out.write("/Profile\">Design & Development</a></h5>\n");
       out.write("                                <span>(658)</span>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
@@ -384,11 +472,22 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("                <div class=\"row justify-content-center\">\n");
       out.write("                    <div class=\"col-xl-10\">\n");
-      out.write("                        \n");
+      out.write("                        ");
+      if (_jspx_meth_sql_setDataSource_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                        ");
+      if (_jspx_meth_sql_query_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                        ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\n");
       out.write("                        ");
 
-                            while (rs.next()) {
-                                byte[] imageData = rs.getBytes("company_logo");
+                            if (r_s.next()) {
+                                byte[] imageData = r_s.getBytes("company_logo");
                                 // Converting image data to Base64
                                 String base64Image = Base64.getEncoder().encodeToString(imageData);
                         
@@ -400,7 +499,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                          <a href=\"");
       out.print( request.getContextPath());
       out.write("/JobDetails?jobID=");
-      out.print( rs.getString("JobID") );
+      out.print( r_s.getString("JobID") );
+      out.write("&employerID=");
+      out.print(r_s.getString("EmployerID") );
       out.write("\"\n");
       out.write("                             ><img src='data:image/png;base64,");
       out.print( base64Image );
@@ -408,26 +509,28 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        /></a>\n");
       out.write("                      </div>\n");
       out.write("                      <div class=\"job-tittle job-tittle2\">\n");
-      out.write("                        <a href=\"");
+      out.write("                          <a href=\"");
       out.print( request.getContextPath());
       out.write("/JobDetails?jobID=");
-      out.print( rs.getString("JobID") );
-      out.write("\">\n");
+      out.print(r_s.getString("JobID"));
+      out.write("&employerID=");
+      out.print(r_s.getString("EmployerID") );
+      out.write(" \">\n");
       out.write("                            <h4>");
-      out.print(rs.getString("JobTitle") );
+      out.print(r_s.getString("JobTitle") );
       out.write("</h4>\n");
       out.write("                        </a>\n");
       out.write("                        <ul>\n");
       out.write("                            <li>");
-      out.print( rs.getString("CompanyName") );
+      out.print( r_s.getString("CompanyName") );
       out.write("</li>\n");
       out.write("                          <li>\n");
       out.write("                            <i class=\"fas fa-map-marker-alt\"></i>");
-      out.print( rs.getString("Location") );
+      out.print( r_s.getString("jobLocation") );
       out.write("\n");
       out.write("                          </li>\n");
       out.write("                          <li>");
-      out.print( rs.getString("SalaryRange") );
+      out.print( r_s.getString("Salary") );
       out.write("</li>\n");
       out.write("                        </ul>\n");
       out.write("                      </div>\n");
@@ -436,15 +539,18 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                      <a href=\"");
       out.print( request.getContextPath());
       out.write("/JobDetails?jobID=");
-      out.print( rs.getString("JobID") );
+      out.print( r_s.getString("JobID") );
+      out.write("&employerID=");
+      out.print(r_s.getString("EmployerID") );
       out.write("\"> ");
-      out.print( rs.getString("JobNature") );
+      out.print( r_s.getString("JobNature") );
       out.write("</a>\n");
       out.write("                    </div>\n");
       out.write("                  </div>\n");
       out.write("                      ");
     
-                          System.out.println(rs.getString("JobNature"));
+                          System.out.println(r_s.getString("JobNature"));
+                          System.out.println(r_s.getString("EmployerID"));
                       }
                       
       out.write("                   \n");
@@ -582,7 +688,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <div class=\"support-caption\">\n");
       out.write("                                <p class=\"pera-top\">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>\n");
       out.write("                                <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>\n");
-      out.write("                                <a href=\"about.jsp\" class=\"btn post-btn\">Post a job</a>\n");
+      out.write("                                <a href=\"");
+      out.print( request.getContextPath());
+      out.write("/post_a_job?employerID=");
+      out.print( r_s.getString("EmployerID") );
+      out.write("\" class=\"btn post-btn\">Post a job</a>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
@@ -901,5 +1011,103 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_sql_setDataSource_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:setDataSource
+    org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag _jspx_th_sql_setDataSource_0 = (org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag) _jspx_tagPool_sql_setDataSource_var_url_driver_nobody.get(org.apache.taglibs.standard.tag.rt.sql.SetDataSourceTag.class);
+    _jspx_th_sql_setDataSource_0.setPageContext(_jspx_page_context);
+    _jspx_th_sql_setDataSource_0.setParent(null);
+    _jspx_th_sql_setDataSource_0.setVar("db");
+    _jspx_th_sql_setDataSource_0.setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+    _jspx_th_sql_setDataSource_0.setUrl("jdbc:sqlserver://localhost:1433;databaseName=JobPortal;user=sa;password=123;encrypt=true;trustServerCertificate=true");
+    int _jspx_eval_sql_setDataSource_0 = _jspx_th_sql_setDataSource_0.doStartTag();
+    if (_jspx_th_sql_setDataSource_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_sql_setDataSource_var_url_driver_nobody.reuse(_jspx_th_sql_setDataSource_0);
+      return true;
+    }
+    _jspx_tagPool_sql_setDataSource_var_url_driver_nobody.reuse(_jspx_th_sql_setDataSource_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_sql_query_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:query
+    org.apache.taglibs.standard.tag.rt.sql.QueryTag _jspx_th_sql_query_0 = (org.apache.taglibs.standard.tag.rt.sql.QueryTag) _jspx_tagPool_sql_query_var_dataSource.get(org.apache.taglibs.standard.tag.rt.sql.QueryTag.class);
+    _jspx_th_sql_query_0.setPageContext(_jspx_page_context);
+    _jspx_th_sql_query_0.setParent(null);
+    _jspx_th_sql_query_0.setVar("rs");
+    _jspx_th_sql_query_0.setDataSource((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${db}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_sql_query_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_sql_query_0 = _jspx_th_sql_query_0.doStartTag();
+      if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.pushBody();
+          _jspx_push_body_count_sql_query_0[0]++;
+          _jspx_th_sql_query_0.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+          _jspx_th_sql_query_0.doInitBody();
+        }
+        do {
+          out.write("select JobID, A.EmployerID, JobTitle, JobLocation, Salary, CompanyName, company_logo, JobNature from Job A join Employer B ON A.EmployerID = B.EmployerID");
+          int evalDoAfterBody = _jspx_th_sql_query_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+        if (_jspx_eval_sql_query_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE)
+          out = _jspx_page_context.popBody();
+          _jspx_push_body_count_sql_query_0[0]--;
+      }
+      if (_jspx_th_sql_query_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sql_query_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sql_query_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sql_query_0.doFinally();
+      _jspx_tagPool_sql_query_var_dataSource.reuse(_jspx_th_sql_query_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${rs}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write(' ');
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
   }
 }

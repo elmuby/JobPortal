@@ -34,21 +34,22 @@ public class JobListing extends HttpServlet {
             Statement statement = con.createStatement();
             Statement countStatement = con.createStatement();
             String countQuery = "SELECT COUNT(*) As 'count' FROM Job";
-            String query = "select *, FORMAT(postedDate, 'd, MMMM yyyy') AS 'Date' from Job";
+            String query = "select JobID, A.EmployerID, JobTitle, JobLocation, Salary, CompanyName, company_logo, JobNature from Job A join Employer B ON A.EmployerID = B.EmployerID";
             ResultSet rs = statement.executeQuery(query);
             ResultSet countResult = countStatement.executeQuery(countQuery);
-            
+
             //creating arraylist to store the object of joblistbean class
             List<JobListBean> jobList = new ArrayList<>();
-            while(countResult.next()){
+            while (countResult.next()) {
                 request.setAttribute("count", countResult.getString("count"));
             }
             while (rs.next()) {
-                
+
                 //retrieving from the database
                 String jobID = rs.getString("JobID");
-                String location = rs.getString("Location");
-                String salaryRange = rs.getString("SalaryRange");
+                String employerID = rs.getString("EmployerID");
+                String jobLocation = rs.getString("JobLocation");
+                String salaryRange = rs.getString("Salary");
                 String companyName = rs.getString("CompanyName");
                 String jobTitle = rs.getString("JobTitle");
                 String jobNature = rs.getString("JobNature");
@@ -65,13 +66,14 @@ public class JobListing extends HttpServlet {
                 jobListBean.setCompanyName(companyName);
                 jobListBean.setJobNature(jobNature);
                 jobListBean.setJobTitle(jobTitle);
-                jobListBean.setLocation(location);
+                jobListBean.setLocation(jobLocation);
                 jobListBean.setSalaryRange(salaryRange);
+                jobListBean.setEmployerID(employerID);
 
                 //adding the JobListBean object to the List jobList
                 jobList.add(jobListBean);
             }
-            
+           
             request.setAttribute("jobList", jobList);
             request.getRequestDispatcher("job_listing.jsp").forward(request, response);
 

@@ -29,9 +29,13 @@ public class JobDetails extends HttpServlet {
             //retrieving the jobID and EmployerId from job_listing.jsp 
             String jobId = request.getParameter("jobID");
             String employerId = request.getParameter("employerID");
-            String joinQuery = "select *, FORMAT(postedDate, 'd, MMMM yyyy') AS 'Date' from Job WHERE JobID = ?";
+            String joinQuery = "select JobID, A.EmployerID, JobTitle, JobLocation,JobDescription, jobRequirement, "
+                    + "Salary, JobNature, CompanyName, company_description, company_email,company_website, "
+                    + "vacancy, FORMAT(postedDate, 'd, MMMM yyyy') AS 'Date', DeadlineDate, company_logo, JobNature from Job A\n"
+                    + "join Employer B ON A.EmployerID = B.EmployerID WHERE JobID = ? and A.EmployerID = ?";
             PreparedStatement preparedStatement = con.prepareStatement(joinQuery);
             preparedStatement.setString(1, jobId);
+            preparedStatement.setString(2, employerId);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 // Retrieving image data as bytes
@@ -41,27 +45,28 @@ public class JobDetails extends HttpServlet {
 
                 //to keep track of jobID and EmployerID
                 request.setAttribute("JobID", rs.getString("JobID"));
+                request.setAttribute("EmployerID", rs.getString("EmployerID"));
 
                 // Setting attributes to the columns requested in the query so we can retrive them from jobDetails.jsp
                 request.setAttribute("jobTitle", rs.getString("JobTitle"));
                 request.setAttribute("employerName", rs.getString("companyName"));
-                request.setAttribute("Location", rs.getString("Location"));
-                request.setAttribute("salaryRange", rs.getString("SalaryRange"));
+                //request.setAttribute("Location", rs.getString("Location"));
                 request.setAttribute("jobDescription", rs.getString("JobDescription"));
 
                 request.setAttribute("base64Image", base64Image);
-                request.setAttribute("requiredKnowledge", rs.getString("RequiredKnowledge"));
-                request.setAttribute("educationNExperience", rs.getString("EducationNExperience"));
+                request.setAttribute("requiredKnowledge", rs.getString("jobRequirement"));
+                //request.setAttribute("educationNExperience", rs.getString("EducationNExperience"));
                 request.setAttribute("postedDate", rs.getString("Date"));
 
-                request.setAttribute("location", rs.getString("Location"));
+                request.setAttribute("location", rs.getString("jobLocation"));
                 request.setAttribute("vacancy", rs.getString("vacancy"));
                 request.setAttribute("jobNature", rs.getString("JobNature"));
+                request.setAttribute("companyDescription", rs.getString("company_description"));
+                request.setAttribute("salaryRange", rs.getString("Salary"));
+                request.setAttribute("applicationDate", rs.getString("DeadlineDate"));
+                request.setAttribute("website", rs.getString("company_website"));
+                request.setAttribute("email", rs.getString("company_email"));
 
-                request.setAttribute("salaryRange", rs.getString("SalaryRange"));
-                request.setAttribute("applicationDate", rs.getString("ApplicationDate"));
-                request.setAttribute("website", rs.getString("companyWebsite"));
-                request.setAttribute("email", rs.getString("CompanyEmail"));
             }
 
             // Forwarding the request to the JSP
