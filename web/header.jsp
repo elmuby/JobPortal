@@ -61,7 +61,7 @@
         <%
             Connection connection = ConnectionProvider.getConnection();
             String sQuery = "SELECT * FROM Employer WHERE EmployerID = ?";
-            session = request.getSession();
+            session = request.getSession(false);
             if (session.getAttribute("id") != null) {
                 try {
                     String id = session.getAttribute("id").toString();
@@ -78,7 +78,13 @@
                         <a href="<%= request.getContextPath()%>/Profile?EmployerID=<%= rs.getString("EmployerID") %>"
                            ><img style="width:100%; object-position: center;  " src='data:image/png;base64, <%= base64Image %>' alt=""
                               /></a>
+                              
                     </div>
+                    
+                           <a href="<%= request.getContextPath()%>//JobPostPage?employerID=<%= rs.getString("EmployerID")%>" style="margin-top: -55px;
+    position: absolute;
+    margin-left: 50rem;" class="btn post-btn">Post a job</a>
+                  
         <%  } else{ %>
                 <div class="logo">
                     <a href="index.jsp"
@@ -96,12 +102,7 @@
                ><img src="assets/img/logo/logo.png" alt=""
                   /></a>
         </div>
-        <% }%>
-
-                
-                
-                
-                
+        <% }%>    
                 
                 
                 
