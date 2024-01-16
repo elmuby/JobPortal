@@ -201,7 +201,14 @@
     <main>
         <!--to retrieve the id from the session..-->
         <% 
-        String id = request.getAttribute("id").toString();
+            String id = "";
+            if(request.getAttribute("id") != null){
+               id = request.getAttribute("id").toString();
+            }else{
+                request.setAttribute("errorMessage", "Sign In first");
+                request.getRequestDispatcher("signin.jsp").forward(request, response);
+            }
+           
         %>
         <section class="main-div">
             <h2 class="post_job_header">Setup Your Company Profile</h2>

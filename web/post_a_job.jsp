@@ -165,6 +165,9 @@
                         <p class="form_heading_name">Job Details</p>
                         <hr style="margin-top: 20px;">
                         <br>
+                        <!--to keep track of employerID-->
+                        <input type="hidden" name="employerID" value="${EmployerID}"/>
+                        
                         <div class="txt_feild">
                             <input name="job_name" placeholder="Job Name" type="text" required>
                             <label for="">
