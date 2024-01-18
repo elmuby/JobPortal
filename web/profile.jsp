@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Document</title>
         <style>
@@ -23,7 +24,6 @@
                 height: 200px;
                 overflow: hidden;
                 border-radius: 7px;
-                border: 3px solid #fb246a;
                 padding-bottom: 10px;
             }
 
@@ -88,11 +88,11 @@
                 padding: 5px;
                 /* background-color:bisque; */
                 border-bottom: 4px solid #fb246a;
-                font-family: ubuntu;
+                font-family: system-ui;
                 font-size: 2rem;
             }
         </style>
-    </head>
+    </head> 
     <body>
         <!-- <h6 style="background-color: blanchedalmond; padding: 30px; font-size: 6rem;">header right here</h6> -->
         <br>
@@ -136,7 +136,7 @@
             </a>
         </section>
         <section class="section_2">
-            <div class="jobs_posted">Jobs Posted</div>
+            <div class="jobs_posted">${count} Jobs Posted </div>
 
             <div>
                 <!-- Retrieve the list from the request from jobListing.java -->
@@ -158,8 +158,8 @@
                     </div>
                     <div class="items-link f-right">
                         <a href="">${s.jobNature}</a>
-                        <a href="<%= request.getContextPath()%>/EditJob?jobID=${s.jobID}&employerID=${s.employerID}">Edit</a>
-                        <a href="">Delete</a>
+                        <a href="<%= request.getContextPath()%>/edit_job?jobID=${s.jobID}&employerID=${s.employerID}">Edit</a>
+                        <a href="<%= request.getContextPath()%>/DeleteJob?jobID=${s.jobID}&employerID=${s.employerID}">Delete</a>
 <!--                        <span>7 hours ago</span>-->
                     </div>
                 </div>
